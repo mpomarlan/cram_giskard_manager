@@ -26,18 +26,18 @@
 ;;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
-(in-package :mot-man)
+(in-package :cram-giskard-manager)
 
 (defclass giskard-goal-specification (manipulation-goal-specification)
-  (()))
+  ())
 
-(defmethod make-goal-specification ((type (eql :giskard-goal-specification)) &rest args)
+(defmethod mot-man:make-goal-specification ((type (eql :giskard-goal-specification)) &rest args)
   (apply #'make-instance (cons 'giskard-goal-specification args)))
 
-(defmethod make-goal-specification ((type (eql 'giskard-goal-specification)) &rest args)
+(defmethod mot-man:make-goal-specification ((type (eql 'giskard-goal-specification)) &rest args)
   (apply #'make-instance (cons 'giskard-goal-specification args)))
 
-(defmethod execute-arm-action ((goal-specification giskard-goal-specification))
+(defmethod mot-man:execute-arm-action ((goal-specification giskard-goal-specification))
   ;; TODO: add an interpretation of the goal spec, and appropriate giskard calls, here.
   ;; For now, just fall-back to whatever the fallback is
   (call-fallback goal-specification))
