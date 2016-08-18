@@ -45,3 +45,10 @@
 (defun fallback-to-giskard (goal-spec)
   (copy-goal-specification goal-spec 'giskard-goal-specification))
 
+(defmethod make-fallback-converter ((type (eql :giskard-goal-specification)))
+  #'fallback-to-giskard)
+
+(defmethod make-fallback-converter ((type (eql 'giskard-goal-specification)))
+  #'fallback-to-giskard)
+
+
